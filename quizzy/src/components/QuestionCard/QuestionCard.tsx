@@ -2,11 +2,11 @@ import React from 'react';
 import { IQuestionCard } from '../../../types/QuestionModels';
 
 const QuestionCard: React.FC<IQuestionCard> = ({ 
-    question, 
-    answers, 
-    callback, 
-    userAnswer, 
-    questionNr, 
+    question,
+    answers,
+    callback,
+    questionNr,
+    userAnswer,
     totalQuestions 
 }) => {
     return (
@@ -14,12 +14,15 @@ const QuestionCard: React.FC<IQuestionCard> = ({
             <p className="number">
                 Question: { questionNr } / { totalQuestions }
             </p>
-            <p dangerouslySetInnerHTML={{ __html: question }} />
+            { question }
+
             <div>
                 { answers.map((answer) => 
-                    <button onClick={ callback }>
-                        <span dangerouslySetInnerHTML= {{ __html: answer}} />
-                    </button>
+                    <div key={answer}>
+                        <button onClick={ callback } disabled={!!userAnswer} value={ answer }>
+                            <span>{ answer }</span>
+                        </button>
+                    </div>
                 )}
             </div>
         </div>
