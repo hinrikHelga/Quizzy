@@ -16,9 +16,8 @@ const QuestionCard: React.FC<IQuestionCard> = ({
                 Question: { questionNr } / { totalQuestions }
             </p>
             { question }
-
             <div>
-                { answers.map((answer) => 
+                { answers.map((answer) => (
                     <ButtonWrapper 
                         key={answer}
                         correct={userAnswer?.correctAnswer === answer}
@@ -27,8 +26,8 @@ const QuestionCard: React.FC<IQuestionCard> = ({
                         <button onClick={ callback } disabled={!!userAnswer} value={ answer }>
                             <span>{ answer }</span>
                         </button>
-                    </ButtonWrapper >
-                )}
+                    </ButtonWrapper>
+                ))}
             </div>
         </QuestionCardWrapper>
     );

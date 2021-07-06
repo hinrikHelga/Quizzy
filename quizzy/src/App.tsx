@@ -32,19 +32,21 @@ function App() {
     console.log(questions);
   }
 
-  const checkAnswers = async (e: React.MouseEvent<HTMLButtonElement>) => {
-    const clickedAnswer: string = e.currentTarget.value;
-    const clickedAnswerCorrect: boolean =  clickedAnswer === questions[number].correct_answer;
+  const checkAnswer = async (e: React.MouseEvent<HTMLButtonElement>) => {
+    if (!gameOver) {
+      const clickedAnswer: string = e.currentTarget.value;
+      const clickedAnswerCorrect: boolean =  clickedAnswer === questions[number].correct_answer;
 
-    if (clickedAnswerCorrect) { setScore(prev => prev + 1) }
+      if (clickedAnswerCorrect) { setScore(prev => prev + 1) }
 
-    const answerObj = {
-      question: questions[number].question,
-      answer: clickedAnswer,
-      correct: clickedAnswerCorrect,
-      correctAnswer: questions[number].correct_answer
-    }
-    setUserAnswers(prev => [...prev, answerObj]);
+      const answerObj = {
+        question: questions[number].question,
+        answer: clickedAnswer,
+        correct: clickedAnswerCorrect,
+        correctAnswer: questions[number].correct_answer
+      }
+      setUserAnswers(prev => [...prev, answerObj]);
+    } 
   }
   
   
@@ -65,7 +67,7 @@ function App() {
         <h3> Get ready to answer all kinds of questions from totally random categories! </h3>
         {
           gameOver || userAnswers.length === TOTAL_QUESTIONS 
-          ? <button className="start" onClick={ startQuiz   }>Start</button>
+          ? <button className="start" onClick={ startQuiz }>Start</button>
           : null 
         }
         { !gameOver ? <p className="score">Score: { score }</p> : null }
@@ -78,7 +80,7 @@ function App() {
               question={ questions[number].question }
               answers={ questions[number].answers }
               userAnswer={ userAnswers ? userAnswers[number] : undefined }
-              callback={ checkAnswers }
+              callback={ checkAnswer }
             />
           )
         }
@@ -87,7 +89,9 @@ function App() {
           && !loading
           && userAnswers.length === number + 1
           && number !== TOTAL_QUESTIONS - 1
-          ? <button className="next" onClick={ nextQuestion }>Next Question</button>
+          ? <button className="next" onClick={ nextQuestion }>
+              Next Question
+            </button>
           : null
         }
       </QuizWrapper>

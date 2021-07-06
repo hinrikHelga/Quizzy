@@ -28,7 +28,7 @@ export const GlobalStyle = createGlobalStyle`
         background-image: url(${BGImage});
         background-size: cover;
         margin: 0;
-        padding: 20px;
+        padding: 0 20px;
         display: flex;
         justify-content: center;
     }
@@ -48,13 +48,14 @@ export const QuizWrapper = styled.div`
         color: #FBFFFF
     }
 
-    > score {
+    .score {
         color: #FBFFFF;
-        font-size: 3em;
+        font-size: 2em;
         margin: 0;
+        padding-bottom: 20px;
         text-shadow:
             0 0 7px #FC4827,
-            0 0 10px #FF3131,
+            0 0 10px #FC4827,
             0 0 21px #FF3131,
             0 0 42px #FF3131,
             0 0 82px #E51616,
@@ -63,7 +64,7 @@ export const QuizWrapper = styled.div`
             0 0 151px #720B0B;
     }
 
-    > h3 {
+    h3 {
         font-family: 'Catamaran', sans-serif;
         font-size: 22px;
         color: #FBFFFF;
@@ -78,16 +79,16 @@ export const QuizWrapper = styled.div`
             0 0 151px #720B0B;
     }
 
-    > h1 {
+    h1 {
         /* animation: ${flicker} 0.11s ease-in-out infinite alternate; */
         font-family: 'Catamaran', sans-serif;
         font-size: 70px;
         font-weight: 400;
         color: #FBFFFF;
-        margin: 20px;
+        margin: 10px;
         text-shadow:
             0 0 7px #FC4827,
-            0 0 10px #FF3131,
+            0 0 10px #FC4827,
             0 0 21px #FF3131,
             0 0 42px #FF3131,
             0 0 82px #E51616,
@@ -98,7 +99,11 @@ export const QuizWrapper = styled.div`
 
     .start, .next {
         cursor: pointer;
-        background-color: #FC4827;
+        box-shadow: 
+            0 0 7px #FC4827,
+            0 0 10px #FF3131,
+            0 0 21px #FF3131,
+            0 0 42px #E51616;
         border: 2px solid #FC4827;
         border-radius: 30px;
         height: 40px;

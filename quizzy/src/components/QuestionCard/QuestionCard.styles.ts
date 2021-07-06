@@ -10,7 +10,7 @@ export const QuestionCardWrapper = styled.div `
     padding: 20px;
     text-align: center;
 
-    > p {
+    p {
         font-size: 1rem;
     } 
 `
@@ -36,15 +36,14 @@ export const ButtonWrapper = styled.div<ButtonWrapperProps> `
         margin: 5px 0;
         background: ${({ correct, userClicked }) => 
             correct
-            ? 'lineargradient(90deg, #39FF14, #39FF14)'
+            ? '-webkit-linear-gradient(90deg, #39FF14, #39FF14)'
             : !correct && userClicked
-                ? 'lineargradient(90deg, #fff, #fff)'
-                : 'lineargradient(90deg, #39FF14, #39FF14)'  
+                ? '-webkit-linear-gradient(90deg, #E51616, #720B0B)'
+                : '-webkit-linear-gradient(90deg, #FC4827, #E51616)'  
         };
         border: 3px solid #fff;
         border-radius: 10px;
         box-shadow: 1px, 2px 0px rgba(0, 0, 0, 0,1);
-        color: #FC4827;
         text-shadow: 0px 1px 0px rgba(0, 0, 0, 0,25);
     }
 `
