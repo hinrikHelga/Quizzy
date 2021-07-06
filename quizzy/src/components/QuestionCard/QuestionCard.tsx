@@ -1,5 +1,6 @@
 import React from 'react';
 import { IQuestionCard } from '../../../types/QuestionModels';
+import { QuestionCardWrapper, ButtonWrapper } from './QuestionCard.styles';
 
 const QuestionCard: React.FC<IQuestionCard> = ({ 
     question,
@@ -10,22 +11,25 @@ const QuestionCard: React.FC<IQuestionCard> = ({
     totalQuestions 
 }) => {
     return (
-        <div>
+        <QuestionCardWrapper>
             <p className="number">
                 Question: { questionNr } / { totalQuestions }
             </p>
             { question }
-
             <div>
-                { answers.map((answer) => 
-                    <div key={answer}>
+                { answers.map((answer) => (
+                    <ButtonWrapper 
+                        key={answer}
+                        correct={userAnswer?.correctAnswer === answer}
+                        userClicked={userAnswer?.answer === answer}
+                    >
                         <button onClick={ callback } disabled={!!userAnswer} value={ answer }>
                             <span>{ answer }</span>
                         </button>
-                    </div>
-                )}
+                    </ButtonWrapper>
+                ))}
             </div>
-        </div>
+        </QuestionCardWrapper>
     );
 }
 
